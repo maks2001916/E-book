@@ -33,7 +33,11 @@ class MainActivity : AppCompatActivity() {
         database = Database()
         downloadBTN.setOnClickListener {
             val book = loadBook(database.text)
-            for (i in book ) textTV.text = "$i \n"
+            if (book.isNotEmpty()) {
+                textTV.text = book.joinToString("\n")
+            } else {
+                textTV.text = "Книга пуста"
+            }
         }
     }
 
